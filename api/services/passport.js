@@ -143,7 +143,7 @@ passport.connect = function (req, query, profile, next) {
       // Action:   Get the user associated with the passport.
       else {
         // If the tokens have changed since the last session, update them
-        if (query.hasOwnProperty('tokens') && query.tokens !== passport.tokens) {
+        if (query.hasOwnProperty('tokens') && !_.isEqual(query.tokens, passport.tokens)) {
           passport.tokens = query.tokens;
         }
 
